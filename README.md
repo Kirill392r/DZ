@@ -16,9 +16,9 @@
 ## Использование
 
 Примеры использования функций:
-
+``` python
 from src.processing import filter_by_state, sort_by_date
-
+```
 # Пример использования filter_by_state
 ``` python
 transactions = [
