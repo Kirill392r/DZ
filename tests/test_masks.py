@@ -1,46 +1,60 @@
+import pytest
+
 from src.masks import get_mask_account, get_mask_card_number
 
 
-def test_valid_card_number(correct_card_number):
+def test_valid_card_number(correct_card_number: str) -> None:
     """Тест с корректным номером карты"""
-    assert get_mask_card_number("7000792289606361")
+    assert get_mask_card_number(correct_card_number) == "7000 79** **** 6361"
 
 
-def test_invalid_length(invalid_length):
+def test_invalid_length(invalid_length: str) -> None:
     """Тест с некорректной длинной карты"""
-    assert get_mask_card_number("700079228960636")
+    with pytest.raises(ValueError, match="Номер карты должен состоять из 16 цифр"):
+        get_mask_card_number(invalid_length)
 
 
-def test_non_digit_characters(the_card_number_must_consist_of_sixteen_digits):
+def test_non_digit_characters(non_digit_characters: str) -> None:
     """Тест с нечисловыми символами в номере карты"""
-    assert get_mask_card_number("7000abc289606361")
+    with pytest.raises(ValueError, match="Номер карты должен состоять из 16 цифр"):
+        get_mask_card_number(non_digit_characters)
 
 
-def test_empty_string(the_card_number_must_consist_of_sixteen_digits):
+def test_empty_string(empty_string: str) -> None:
     """Теск с пустой строкой"""
-    assert get_mask_card_number("")
+    with pytest.raises(ValueError, match="Номер карты должен состоять из 16 цифр"):
+        get_mask_card_number(empty_string)
 
 
-def test_whitespace_characters(the_card_number_must_consist_of_sixteen_digits):
+def test_whitespace_characters(whitespace_characters: str) -> None:
     """Тест с пробелами в номере карты"""
-    assert get_mask_card_number("7000 7922 8960 6361")
+    with pytest.raises(ValueError, match="Номер карты должен состоять из 16 цифр"):
+        get_mask_card_number(whitespace_characters)
 
 
-def test_correct_card_number_account(correct_card_number_account):
+def test_valid_account_number(valid_account_number: str) -> None:
     """Тест с корректным номером счёта"""
-    assert get_mask_account("73654108430135874305")
+    assert get_mask_account(valid_account_number) == "**4305"
 
 
-def test_invalid_length_account(invalid_length_account):
+def test_account_number_with_four_digits(account_number_with_four_digits: str) -> None:
+    """Тест с номером счета из 4 цифр"""
+    assert get_mask_account(account_number_with_four_digits) == "**1234"
+
+
+def test_invalid_length_account(invalid_length_account: str) -> None:
     """Тест с некорректной длинной счёта"""
-    assert get_mask_account("736")
+    with pytest.raises(ValueError, match="Номер счета должен содержать как минимум 4 цифры"):
+        get_mask_account(invalid_length_account)
 
 
-def test_non_digit_characters_account(non_digit_characters_account):
+def test_empty_account_string(empty_account_string: str) -> None:
+    """Тест с пустой строкой"""
+    with pytest.raises(ValueError, match="Номер счета должен содержать как минимум 4 цифры"):
+        get_mask_account(empty_account_string)
+
+
+def test_non_digit_characters_account(non_digit_characters_account: str) -> None:
     """Тест с нечисловыми символами в номере счёта"""
-    assert get_mask_account("7365abc8430135874305")
-
-
-def test_whitespace_characters_account(whitespace_characters_account):
-    """Тест с пробелами в номере счёта"""
-    assert get_mask_account("7365 4108 4301 3587 4305")
+    with pytest.raises(ValueError, match="Номер счета должен состоять только из цифр"):
+        get_mask_account(non_digit_characters_account)
