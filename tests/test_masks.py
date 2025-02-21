@@ -33,7 +33,7 @@ def test_whitespace_characters(whitespace_characters: str) -> None:
 
 
 def test_valid_account_number(valid_account_number: str) -> None:
-    """Тест с корректным номером счёта"""
+    """Тест с корректным номером счета"""
     assert get_mask_account(valid_account_number) == "**4305"
 
 
@@ -43,7 +43,7 @@ def test_account_number_with_four_digits(account_number_with_four_digits: str) -
 
 
 def test_invalid_length_account(invalid_length_account: str) -> None:
-    """Тест с некорректной длинной счёта"""
+    """Тест с некорректной длинной счета"""
     with pytest.raises(ValueError, match="Номер счета должен содержать как минимум 4 цифры"):
         get_mask_account(invalid_length_account)
 
@@ -55,6 +55,6 @@ def test_empty_account_string(empty_account_string: str) -> None:
 
 
 def test_non_digit_characters_account(non_digit_characters_account: str) -> None:
-    """Тест с нечисловыми символами в номере счёта"""
+    """Тест с нечисловыми символами в номере счета"""
     with pytest.raises(ValueError, match="Номер счета должен состоять только из цифр"):
         get_mask_account(non_digit_characters_account)
