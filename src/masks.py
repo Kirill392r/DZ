@@ -1,5 +1,6 @@
 def get_mask_card_number(card_number: str) -> str:
     """Маскирует номер карты, оставляя видимыми первые 6 и последние 4 цифры."""
+
     if not card_number.isdigit() or len(card_number) != 16:
         raise ValueError("Номер карты должен состоять из 16 цифр")
 
@@ -15,11 +16,11 @@ def get_mask_card_number(card_number: str) -> str:
 def get_mask_account(account_number: str) -> str:
     """Маскирует номер счета, оставляя видимыми только последние 4 цифры."""
 
-    if not account_number.isdigit():
-        raise ValueError("Номер счета должен состоять только из цифр")
-
     if len(account_number) < 4:
         raise ValueError("Номер счета должен содержать как минимум 4 цифры")
+
+    if not account_number.isdigit():
+        raise ValueError("Номер счета должен состоять только из цифр")
 
     last_four_digits = account_number[-4:]
 
