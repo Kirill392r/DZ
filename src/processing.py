@@ -22,7 +22,6 @@ def sort_by_date(data: list[dict], reverse: bool = True) -> list:
         except ValueError:
             return False
 
-    # Проверяем корректность всех дат перед сортировкой
     for item in data:
         if not validate_date(item["date"]):
             raise ValueError("Некорректный формат даты")
