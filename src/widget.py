@@ -23,18 +23,16 @@ def mask_account_card(info: str) -> str:
 def get_date(date_str: str) -> str:
     """Преобразует строку с датой в формате "2024-03-11T02:26:18.671407"
     в строку с датой в формате "ДД.ММ.ГГГГ"."""
-    try:
-        if "T" not in date_str:
-            return "Некорректный формат даты"
-        date_part, time_part = date_str.split("T")
-        if len(date_part.split("-")) != 3:
-            return "Некорректный формат даты"
-        year, month, day = date_part.split("-")
-        if not (year.isdigit() and month.isdigit() and day.isdigit()):
-            return "Некорректный формат даты"
-        if not all(part.isdigit() for part in time_part.replace(":", "").replace(".", "")):
-            return "Некорректный формат даты"
-        formatted_date = f"{day}.{month}.{year}"
-        return formatted_date
-    except (IndexError, ValueError):
+
+    if "T" not in date_str:
         return "Некорректный формат даты"
+    date_part, time_part = date_str.split("T")
+    if len(date_part.split("-")) != 3:
+        return "Некорректный формат даты"
+    year, month, day = date_part.split("-")
+    if not (year.isdigit() and month.isdigit() and day.isdigit()):
+        return "Некорректный формат даты"
+    if not all(part.isdigit() for part in time_part.replace(":", "").replace(".", "")):
+        return "Некорректный формат даты"
+    formatted_date = f"{day}.{month}.{year}"
+    return formatted_date
