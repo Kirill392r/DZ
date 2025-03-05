@@ -1,7 +1,9 @@
 def log(filename=None):
     """Функция декоратор , который будет автоматически логировать начало и конец выполнения функции"""
+
     def wrapper(func):
         """Функция обёртка принимает функцию которую необходимо декорировать"""
+
         def inner(*args, **kwargs):
             """Внутринняя функция"""
             try:
@@ -24,5 +26,7 @@ def log(filename=None):
                 else:
                     print(error_massage)
             return result
+
         return inner
+
     return wrapper
