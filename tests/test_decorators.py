@@ -1,5 +1,3 @@
-import pytest
-
 from src.decorators import log
 
 
@@ -39,6 +37,7 @@ def test_log_card_number_generator(capsys) -> None:
     captured = capsys.readouterr()
     assert "card_number_generator ok" in captured.out
 
+
 @log()
 def exepition(a, b) -> None:
     """Тесты на ошибки"""
@@ -49,4 +48,4 @@ def test_zero_by_division(capsys):
     """Тест на ошибку с делением на 0"""
     exepition(2, 0)
     captured = capsys.readouterr()
-    assert captured.out == f"division by zero error: тип ошибки. Inputs: (2, 0), "'{}'"\n\n"
+    assert captured.out == "division by zero error: тип ошибки. Inputs: (2, 0), " "{}" "\n\n"
