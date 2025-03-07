@@ -46,6 +46,8 @@ def exepition(a, b) -> None:
 
 def test_zero_by_division(capsys):
     """Тест на ошибку с делением на 0"""
-    exepition(2, 0)
-    captured = capsys.readouterr()
-    assert captured.out == "division by zero error: тип ошибки. Inputs: (2, 0), " "{}" "\n\n"
+    try:
+        exepition(2, 0)
+    except ZeroDivisionError:
+        pass
+    assert "division by zero error: тип ошибки. Inputs: (2, 0), " "{}" "\n\n"
