@@ -1,3 +1,5 @@
+import pytest
+
 from src.decorators import log
 
 
@@ -46,8 +48,19 @@ def exepition(a, b) -> None:
 
 def test_zero_by_division(capsys):
     """Тест на ошибку с делением на 0"""
-    try:
+    with pytest.raises(Exception):
         exepition(2, 0)
-    except ZeroDivisionError:
-        pass
     assert "division by zero error: тип ошибки. Inputs: (2, 0), " "{}" "\n\n"
+
+
+@log()
+def exepition_tupe(a) -> None:
+    """Тесты на ошибки"""
+    return a
+
+
+def test_tupe_error():
+    """Тест на ошибку типа данных"""
+    with pytest.raises(Exception):
+        exepition_tupe(1, 2)
+    assert "TypeError: тип ошибки. Inputs: (1, 2), " "{}" "\n\n"

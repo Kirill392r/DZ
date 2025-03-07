@@ -13,8 +13,8 @@ def log(filename=None):
                         file.write(f"{func.__name__} ok\n")
                 else:
                     print(f"{func.__name__} ok\n")
-            except TypeError:
-                error_massage = f"TypeError error: тип ошибки. Inputs: {args}, {kwargs}\n"
+            except Exception as e:
+                error_massage = f"{e}: тип ошибки. Inputs: {args}, {kwargs}\n"
                 if filename:
                     with open(filename, "a", encoding="utf-8") as file:
                         file.write(f"{error_massage}\n")
