@@ -33,4 +33,5 @@ def convert_transaction_to_rub(transaction: Dict[str, Any]) -> float:
         else:
             raise Exception(f"Failed to fetch exchange rate: {response.status_code} {response.text}")
     else:
-        raise ValueError(f"Unsupported currency: {currency_code}")
+        return 0.0
+
