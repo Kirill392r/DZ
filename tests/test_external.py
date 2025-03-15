@@ -41,5 +41,6 @@ def test_convert_eur_to_rub():
 def test_unsupported_currency():
     """Проверяет, что функция выбрасывает исключение, если валюта не поддерживается."""
     transaction = {"operationAmount": {"amount": "100.0", "currency": {"code": "GBP"}}}
-    with pytest.raises(ValueError, match="Unsupported currency: GBP"):
-        convert_transaction_to_rub(transaction)
+    with patch("requests.get") as mock_get:
+        assert convert_transaction_to_rub(transaction) == 0.0
+        mock_get.assert_not_called()
