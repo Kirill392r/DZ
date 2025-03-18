@@ -1,6 +1,6 @@
 from unittest.mock import mock_open, patch
 
-from data.utils import read_transactions
+from src.utils import read_transactions
 
 
 def test_read_transactions_valid_file():

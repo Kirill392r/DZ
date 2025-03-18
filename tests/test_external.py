@@ -1,8 +1,6 @@
 from unittest.mock import Mock, patch
 
-import pytest
-
-from data.external_api import convert_transaction_to_rub
+from src.external_api import convert_transaction_to_rub
 
 
 def test_convert_rub_to_rub():
