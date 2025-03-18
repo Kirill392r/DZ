@@ -1,7 +1,7 @@
 import json
+import logging
 from pathlib import Path
 from typing import Any, Dict, List
-import logging
 
 logger = logging.getLogger(__name__)
 file_handler = logging.FileHandler("..\\logs\\utils.log", "w", encoding="utf8")
@@ -9,6 +9,7 @@ file_formater = logging.Formatter("%(asctime)s %(filename)s %(levelname)s: %(mes
 file_handler.setFormatter(file_formater)
 logger.addHandler(file_handler)
 logger.setLevel(logging.INFO)
+
 
 def read_transactions(file_path: str) -> List[Dict[str, Any]]:
     """
@@ -33,5 +34,6 @@ def read_transactions(file_path: str) -> List[Dict[str, Any]]:
     except (json.JSONDecodeError, FileNotFoundError) as e:
         logger.error(f"Ошибка, тип ошибки: {e}")
         return []
+
 
 print(read_transactions("../data/operations.json"))

@@ -7,6 +7,7 @@ file_handler.setFormatter(file_formater)
 logger.addHandler(file_handler)
 logger.setLevel(logging.INFO)
 
+
 def get_mask_card_number(card_number: str) -> str:
     """Маскирует номер карты, оставляя видимыми первые 6 и последние 4 цифры."""
 
@@ -22,7 +23,6 @@ def get_mask_card_number(card_number: str) -> str:
     masked_card_number = f"{first_part[:4]} {first_part[4:6]}{masked_part} {last_part}"
     logger.info("Номер карты успешно замаскирован")
     return masked_card_number
-
 
 
 def get_mask_account(account_number: str) -> str:
