@@ -34,6 +34,3 @@ def read_transactions(file_path: str) -> List[Dict[str, Any]]:
     except (json.JSONDecodeError, FileNotFoundError) as e:
         logger.error(f"Ошибка, тип ошибки: {e}")
         return []
-
-
-print(read_transactions("../data/operations.json"))
