@@ -4,7 +4,9 @@ from pathlib import Path
 from typing import Any, Dict, List
 
 logger = logging.getLogger(__name__)
-file_handler = logging.FileHandler("..\\logs\\utils.log", "w", encoding="utf8")
+file_handler = logging.FileHandler(
+    "C:/Users/1/PycharmProjects/app-01/pythonProject3/logs/utils.log", "w", encoding="utf8"
+)
 file_formater = logging.Formatter("%(asctime)s %(filename)s %(levelname)s: %(message)s")
 file_handler.setFormatter(file_formater)
 logger.addHandler(file_handler)
@@ -34,6 +36,3 @@ def read_transactions(file_path: str) -> List[Dict[str, Any]]:
     except (json.JSONDecodeError, FileNotFoundError) as e:
         logger.error(f"Ошибка, тип ошибки: {e}")
         return []
-
-
-print(read_transactions("../data/operations.json"))
