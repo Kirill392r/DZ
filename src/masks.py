@@ -1,7 +1,7 @@
 import logging
 
 logger = logging.getLogger(__name__)
-file_handler = logging.FileHandler("..\\logs\\masks.log", "w", encoding="utf8")
+file_handler = logging.FileHandler("logs/masks.log", "w", encoding="utf8")
 file_formater = logging.Formatter("%(asctime)s %(filename)s %(levelname)s: %(message)s")
 file_handler.setFormatter(file_formater)
 logger.addHandler(file_handler)
