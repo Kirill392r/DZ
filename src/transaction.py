@@ -2,7 +2,7 @@ import csv
 
 
 def read_transaction_csv(file: str) -> list[dict]:
-    """Функция которая считывает данные с csv файла"""
+    """Функция которая считывает данные с csv-файла"""
     transaction_list = []
     try:
         with open(file, encoding="utf8") as f:
