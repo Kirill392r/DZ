@@ -27,4 +27,4 @@ print(regular_expression_data_search([
     "description": "Перевод организации",
     "from": "Maestro 1596837868705199",
     "to": "Счет 64686473678894779589"
-  }], "state"))
+  }], )
