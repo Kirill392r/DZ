@@ -34,7 +34,7 @@ def count_operations_by_category(operations: list[dict], categories: str) -> dic
     category_counts = {category: 0 for category in categories}
 
     for operation in operations:
-        description = operation.get('description', '').lower()
+        description = operation.get("description", "").lower()
         for category in categories:
             if not category:
                 continue

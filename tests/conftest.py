@@ -138,60 +138,41 @@ def filter_by_currency_invalid_transaction() -> list[dict]:
     ]
 
 
-
 @pytest.fixture
 def sample_operations() -> list[dict]:
     return [
-    {
-        "id": 1,
-        "description": "Перевод организации",
-        "from": "Счет 1234567890123456",
-        "to": "Счет 9876543210987654",
-        "operationAmount": {
-            "amount": "10000",
-            "currency": {
-                "name": "руб.",
-                "code": "RUB"
-            }
-        }
-    },
-    {
-        "id": 2,
-        "description": "Перевод с карты на карту",
-        "from": "Visa Platinum 1234567890123456",
-        "to": "Maestro 9876543210987654",
-        "operationAmount": {
-            "amount": "500",
-            "currency": {
-                "name": "USD",
-                "code": "USD"
-            }
-        }
-    },
-    {
-        "id": 3,
-        "description": "Открытие вклада",
-        "to": "Счет 5678123409876543",
-        "operationAmount": {
-            "amount": "150000",
-            "currency": {
-                "name": "руб.",
-                "code": "RUB"
-            }
-        }
-    }
-]
+        {
+            "id": 1,
+            "description": "Перевод организации",
+            "from": "Счет 1234567890123456",
+            "to": "Счет 9876543210987654",
+            "operationAmount": {"amount": "10000", "currency": {"name": "руб.", "code": "RUB"}},
+        },
+        {
+            "id": 2,
+            "description": "Перевод с карты на карту",
+            "from": "Visa Platinum 1234567890123456",
+            "to": "Maestro 9876543210987654",
+            "operationAmount": {"amount": "500", "currency": {"name": "USD", "code": "USD"}},
+        },
+        {
+            "id": 3,
+            "description": "Открытие вклада",
+            "to": "Счет 5678123409876543",
+            "operationAmount": {"amount": "150000", "currency": {"name": "руб.", "code": "RUB"}},
+        },
+    ]
 
 
 @pytest.fixture
 def sample_operations_count() -> list[dict]:
     return [
-    {"description": "Перевод организации", "amount": 100},
-    {"description": "Перевод с карты на карту", "amount": 50},
-    {"description": "Открытие вклада", "amount": 200},
-    {"description": "Перевод со счета на счет", "amount": 150},
-    {"description": "Перевод организации", "amount": 300},
-    {"description": "Покупка в магазине", "amount": 20},
-    {"description": "Перевод организации", "amount": 400},
-    {"description": "Перевод с карты на карту", "amount": 75},
-]
+        {"description": "Перевод организации", "amount": 100},
+        {"description": "Перевод с карты на карту", "amount": 50},
+        {"description": "Открытие вклада", "amount": 200},
+        {"description": "Перевод со счета на счет", "amount": 150},
+        {"description": "Перевод организации", "amount": 300},
+        {"description": "Покупка в магазине", "amount": 20},
+        {"description": "Перевод организации", "amount": 400},
+        {"description": "Перевод с карты на карту", "amount": 75},
+    ]
